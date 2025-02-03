@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>ตัวอย่างที่ 10</title></head>
+<body>
+    <h3>เกมคลิกเป้าหมาย</h3>
+    <p>คะแนน: <span id="score">0</span></p>
+    <button id="target">คลิกฉัน!</button>
+    <script>
+        let score = 0;
+        document.getElementById("target").onclick = function() {
+            document.getElementById("score").textContent = ++score;
+        };
+    </script>
+</body>
+</html>

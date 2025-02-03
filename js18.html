@@ -1,0 +1,2 @@
+<input id="search" onkeyup="searchItems()" placeholder="ค้นหา..."><ul id="list"><li>แอปเปิ้ล</li><li>กล้วย</li><li>มะม่วง</li></ul>
+<script>function searchItems(){let s=document.getElementById("search").value.toLowerCase();document.querySelectorAll("#list li").forEach(e=>e.style.display=e.textContent.toLowerCase().includes(s)?"":"none");}</script>
