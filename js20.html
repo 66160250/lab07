@@ -1,0 +1,2 @@
+<input id="todo" type="text"><button onclick="addTodo()">เพิ่ม</button><ul id="list"></ul>
+<script>let todos=JSON.parse(localStorage.getItem("todos"))||[];function addTodo(){todos.push(document.getElementById("todo").value);localStorage.setItem("todos",JSON.stringify(todos));displayTodos();}function displayTodos(){document.getElementById("list").innerHTML=todos.map(t=>`<li>${t}</li>`).join("");}displayTodos();</script>
