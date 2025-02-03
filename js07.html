@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>ตัวอย่างที่ 7</title></head>
+<body>
+    <h3>ข้อมูลนักเรียน</h3>
+    <button onclick="showStudentInfo()">แสดงข้อมูล</button>
+    <div id="studentInfo"></div>
+    <script>
+        const student = { name: "สมชาย", age: 15, grade: "ม.3" };
+        function showStudentInfo() {
+            document.getElementById("studentInfo").innerHTML = `ชื่อ: ${student.name}<br> อายุ: ${student.age}<br> ระดับชั้น: ${student.grade}`;
+        }
+    </script>
+</body>
+</html>
