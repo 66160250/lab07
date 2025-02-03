@@ -1,2 +1,47 @@
-<input id="search" onkeyup="searchItems()" placeholder="ค้นหา..."><ul id="list"><li>แอปเปิ้ล</li><li>กล้วย</li><li>มะม่วง</li></ul>
-<script>function searchItems(){let s=document.getElementById("search").value.toLowerCase();document.querySelectorAll("#list li").forEach(e=>e.style.display=e.textContent.toLowerCase().includes(s)?"":"none");}</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 18</title>
+</head>
+
+<body>
+
+    <div id="example18">
+        <h3>18. Search and filter data</h3>
+
+        <input type="text" id="searchInput" onkeyup="searchItems()" placeholder="Search..." />
+
+        <ul id="itemList">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Orange</li>
+            <li>Mango</li>
+            <li>Strawberry</li>
+        </ul>
+    </div>
+
+    <script>
+        // Data search function
+        function searchItems() {
+            // Get search value
+            const searchText = document.getElementById("searchInput").value.toLowerCase();
+
+            // Get all items
+            const items = document.getElementById("itemList").getElementsByTagName("li");
+
+            // Loop to check each item
+            for (let item of items) {
+                const text = item.textContent.toLowerCase();
+
+                // Hide/Show items by search results
+                item.style.display = text.includes(searchText) ? "" : "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
