@@ -1,2 +1,112 @@
-<input id="todo" type="text"><button onclick="addTodo()">เพิ่ม</button><ul id="list"></ul>
-<script>let todos=JSON.parse(localStorage.getItem("todos"))||[];function addTodo(){todos.push(document.getElementById("todo").value);localStorage.setItem("todos",JSON.stringify(todos));displayTodos();}function displayTodos(){document.getElementById("list").innerHTML=todos.map(t=>`<li>${t}</li>`).join("");}displayTodos();</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 20</title>
+
+    <style>
+        #todoList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #todoList li {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="example20">
+        <h3>20. To-Do List (store in Local Storage)</h3>
+
+        <input type="text" id="todoInput" placeholder="Add item..." />
+        <button onclick="addTodo()">Add</button>
+
+        <ul id="todoList"></ul>
+    </div>
+
+    <script>
+        // Load data from Local Storage
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+        // Show all items
+        function displayTodos() {
+            const list = document.getElementById("todoList");
+            list.innerHTML = "";
+
+            todos.forEach((todo, index) => {
+                const li = document.createElement("li");
+
+                // Create checkbox
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = todo.done;
+                checkbox.onchange = () => toggleTodo(index);
+
+                // Create a span for the message
+                const span = document.createElement("span");
+                span.textContent = todo.text;
+                if (todo.done) span.classList.add("done");
+
+                // Create a delete button
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "ลบ";
+                deleteBtn.onclick = () => deleteTodo(index);
+
+                // Append elements
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+            });
+
+            // Save to Local Storage
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
+
+        // Add new item
+        function addTodo() {
+            const input = document.getElementById("todoInput");
+            const text = input.value.trim();
+
+            if (text) {
+                todos.push({ text, done: false });
+                input.value = "";
+                displayTodos();
+            }
+        }
+
+        // Switch item status
+        function toggleTodo(index) {
+            todos[index].done = !todos[index].done;
+            displayTodos();
+        }
+
+        // Delete item
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            displayTodos();
+        }
+
+        // Show list when page loads
+        displayTodos();
+    </script>
+
+</body>
+
+</html>

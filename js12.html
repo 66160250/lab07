@@ -1,1 +1,34 @@
-<button onclick="document.getElementById('counter').textContent++;">คลิกที่นี่</button> <span id="counter">0</span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 12</title>
+</head>
+
+<body>
+
+    <div id="example12">
+        <h3>12. Click counter</h3>
+        <button onclick="incrementCounter()">Click here</button>
+        <p>Number of clicks: <span id="counter">0</span></p>
+    </div>
+
+    <script>
+        // Variable to store number of clicks
+        let clickCount = 0;
+
+        // Function to increase the number of clicks
+        function incrementCounter() {
+            // Increase the counter value
+            clickCount++;
+
+            // Update the click count message
+            document.getElementById("counter").textContent = clickCount;
+        }
+    </script>
+
+</body>
+
+</html>

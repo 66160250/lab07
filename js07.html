@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head><title>ตัวอย่างที่ 7</title></head>
+<head>
+    <title>ตัวอย่างที่ 7</title>
+</head>
 <body>
     <h3>ข้อมูลนักเรียน</h3>
     <button onclick="showStudentInfo()">แสดงข้อมูล</button>
     <div id="studentInfo"></div>
     <script>
-        const student = { name: "สมชาย", age: 15, grade: "ม.3" };
+        const student = {
+            name: "สมชาย ใจดี",
+            age: 15,
+            grade: "ม.3",
+            scores: {
+                math: 85,
+                science: 92,
+                english: 78
+            }
+        };
         function showStudentInfo() {
-            document.getElementById("studentInfo").innerHTML = `ชื่อ: ${student.name}<br> อายุ: ${student.age}<br> ระดับชั้น: ${student.grade}`;
+            let info = document.getElementById("studentInfo");
+            info.innerHTML = `
+                ชื่อ: ${student.name}<br>
+                อายุ: ${student.age}<br>
+                ระดับชั้น: ${student.grade}<br>
+                คะแนน:<br>
+                - คณิตศาสตร์: ${student.scores.math}<br>
+                - วิทยาศาสตร์: ${student.scores.science}<br>
+                - ภาษาอังกฤษ: ${student.scores.english}
+            `;
         }
     </script>
 </body>

@@ -1,2 +1,57 @@
-<img id="slide" src="image1.jpg" width="200"><button onclick="nextImage()">ถัดไป</button>
-<script>let i=0,imgs=["image1.jpg","image2.jpg","image3.jpg"];function nextImage(){i=(i+1)%imgs.length;document.getElementById("slide").src=imgs[i];}</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 16</title>
+</head>
+
+<body>
+
+    <div id="example16">
+        <h3>16. Image slideshow</h3>
+        <div class="slideshow">
+            <div>
+                <img id="slideImage" src="url of image size 400x300" alt="slideshow" />
+            </div>
+            <button onclick="changeSlide(-1)">Previous</button>
+            <button onclick="changeSlide(1)">Next</button>
+        </div>
+    </div>
+
+    <style>
+        .slideshow {
+            text-align: center;
+        }
+
+        .slideshow img {
+            max-width: 400px;
+            height: 300px;
+            margin: 10px;
+        }
+    </style>
+
+    <script>
+        // Create an Array to store image URLs.
+        const images = [
+            "url of image size 400x300",
+            "url of image size 400x300",
+            "url of image size 400x300"
+        ];
+
+        let currentSlide = 0;
+
+        // Slide change function
+        function changeSlide(direction) {
+            // Calculate the index of the next slide.
+            currentSlide = (currentSlide + direction + images.length) % images.length;
+
+            // Update picture
+            document.getElementById("slideImage").src = images[currentSlide];
+        }
+    </script>
+
+</body>
+
+</html>

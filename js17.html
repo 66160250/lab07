@@ -1,2 +1,79 @@
-<form onsubmit="return validateForm()"><input id="email" type="email"><button type="submit">ส่ง</button></form>
-<script>function validateForm(){if(!document.getElementById("email").value.includes("@")){alert("อีเมลไม่ถูกต้อง");return false;}}</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 17</title>
+
+    <style>
+        #validationForm div {
+            margin: 10px 0;
+        }
+
+        #validationForm label {
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="example17">
+        <h3>17. Verification Form</h3>
+
+        <form id="validationForm" onsubmit="validateForm(event)">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required />
+            </div>
+
+            <div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" required />
+            </div>
+
+            <button type="submit">Submit data</button>
+
+            <p id="formError" style="color: red"></p>
+        </form>
+    </div>
+
+    <script>
+        // Form validation function
+        function validateForm(event) {
+            event.preventDefault();
+
+            // Get values from the form
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const errorElement = document.getElementById("formError");
+
+            // Verify passwords match
+            if (password !== confirmPassword) {
+                errorElement.textContent = "Passwords do not match";
+                return;
+            }
+
+            // Check password length
+            if (password.length < 6) {
+                errorElement.textContent = "Password must be at least 6 characters long";
+                return;
+            }
+
+            // If verification passes
+            errorElement.textContent = "Successfully sent data!";
+            errorElement.style.color = "green";
+        }
+    </script>
+
+</body>
+
+</html>
